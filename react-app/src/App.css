@@ -42,4 +42,11 @@
 }
 .navUserName{
   padding-right: 20px;
+  color: #fff;
+}
+.card{
+  padding-top: 1.5rem;
+  margin-left: 1.5rem;
+  width: 22rem;
+  border: 0;
 }

@@ -3,10 +3,13 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../services/firebaseService";
 import {Navbar,Nav, Container, Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
+import {getAllRecords} from "../services/MTServices"
+import { Bonds } from './Bonds';
 
 const Home = () => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState("")
+    const [data, setData] = useState("")
 
     useEffect(()=>{
         onAuthStateChanged(auth, (user) => {
@@ -22,8 +25,9 @@ const Home = () => {
               console.log("user is logged out")
             }
           });
-         
-    }, [])
+        const records = getAllRecords();
+        setData(records)
+    },[data])
 
     const handleLogout = () => {
         signOut(auth).then(()=>{
@@ -38,7 +42,7 @@ const Home = () => {
  
   return (
     <>
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
             <Container fluid>
                 <Navbar.Brand href="#">Matuarity Tracking System</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
@@ -56,6 +60,7 @@ const Home = () => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+        <Bonds data={data}/>
     </>
   )
 }
