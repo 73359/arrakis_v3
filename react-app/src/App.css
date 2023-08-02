@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.loginForm {
+  margin-top: 90px;
+}
+.navUserName{
+  padding-right: 20px;
+}
