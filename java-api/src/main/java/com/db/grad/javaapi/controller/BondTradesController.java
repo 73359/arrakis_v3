@@ -37,4 +37,8 @@ public class BondTradesController {
         return bondTradesService.getBondTradesNotSettled(user_id);
     }
 
+    @GetMapping("/bondtrades/for/{user_id}/matured")
+    public List<Trade> getBondTradesMatured(@PathVariable String user_id) {
+        return bondTradesService.getBondTradesMatured(user_id);
+    }
 }
