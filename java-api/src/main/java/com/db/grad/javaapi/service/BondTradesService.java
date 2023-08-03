@@ -34,7 +34,7 @@ public class BondTradesService implements iBondTradesService {
 
     @Override
     public List<Trade> getBondTradesNotSettled(String user_id) {
-        return null;
+        return bondServiceRepository.getBondTradesNotSettled(user_id);
     }
 
     @Override

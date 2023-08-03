@@ -4,7 +4,6 @@ import com.db.grad.javaapi.model.Trade;
 import com.db.grad.javaapi.service.BondTradesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
