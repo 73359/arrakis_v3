@@ -7,7 +7,7 @@ INSERT INTO book (name) VALUES ('trading_book_6');
 
 INSERT INTO users (name, email) VALUES ('username', 'user@mail.de');
 
-INSERT INTO book_users (book_id, user_id) VALUES ((SELECT book_id from book where name='trading_book_3'), (SELECT user_id from users where name='username'));
+INSERT INTO book_users (book_id, user_id) VALUES ((SELECT book_id from book where name='trading_book_1'), (SELECT user_id from users where name='username'));
 INSERT INTO book_users (book_id, user_id) VALUES ((SELECT book_id from book where name='trading_book_6'), (SELECT user_id from users where name='username'));
 
 INSERT INTO security (isin, cusip, issuer_name, coupon_percent, bond_currency, face_value, maturity_date, status, type) VALUES ('XS1988387210', '', 'BNPParibasIssu 4,37% Microsoft Corp (USD)', 4.37, 'USD', 1000, '2023-08-05', 'active', 'CORP');
