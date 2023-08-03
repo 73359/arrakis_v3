@@ -30,7 +30,7 @@ public class BondTradesService implements iBondTradesService {
 
     @Override
     public List<Trade> getBondTradesDueToMature(int user_id) {
-        return null;
+        return bondServiceRepository.getBondTradesDueToMature(user_id);
     }
 
     @Override

@@ -28,5 +28,10 @@ public class BondTradesController {
         return bondTradesService.getBondTradesForUser(user_id);
     }
 
+    @GetMapping("/bondtrades/for/{user_id}/duetomature")
+    public List<Trade> getBondTradesDueToMature(@PathVariable int user_id) {
+        return bondTradesService.getBondTradesDueToMature(user_id);
+    }
+
 
 }
