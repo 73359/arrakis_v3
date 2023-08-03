@@ -10,8 +10,9 @@ import java.util.List;
 @Repository
 public interface BondServiceRepository extends JpaRepository<Trade, Integer> {
 
-    @Query(nativeQuery = true, value = "select * from trades")
-    List<Trade> getAllBondTrades();
+    @Query(nativeQuery = true, value = "select * from trades where book_id in" +
+            "(select book_id from book_users where user_id like :user_id)")
+    List<Trade> getBondTradesForUser(int user_id);
 
 //    @Query(nativeQuery = true, value = "select * from dogs where name = :#{#dog.name}")
 //    List<Dog> findByName(@Param("dog") Dog dog);

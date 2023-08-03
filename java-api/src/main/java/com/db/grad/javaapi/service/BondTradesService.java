@@ -20,12 +20,12 @@ public class BondTradesService implements iBondTradesService {
 
     @Override
     public List<Trade> getAllBondTrades() {
-        return bondServiceRepository.getAllBondTrades();
+        return bondServiceRepository.findAll();
     }
 
     @Override
-    public List<Trade> getBondTradesFromBook(int user_id, Book book) {
-        return null;
+    public List<Trade> getBondTradesForUser(int user_id) {
+        return bondServiceRepository.getBondTradesForUser(user_id);
     }
 
     @Override
