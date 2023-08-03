@@ -24,17 +24,17 @@ public class BondTradesController {
     }
 
     @GetMapping("/bondtrades/for/{user_id}")
-    public List<Trade> getBondTradesForUser(@PathVariable int user_id) {
+    public List<Trade> getBondTradesForUser(@PathVariable String user_id) {
         return bondTradesService.getBondTradesForUser(user_id);
     }
 
     @GetMapping("/bondtrades/for/{user_id}/duetomature")
-    public List<Trade> getBondTradesDueToMature(@PathVariable int user_id) {
+    public List<Trade> getBondTradesDueToMature(@PathVariable String user_id) {
         return bondTradesService.getBondTradesDueToMature(user_id);
     }
 
     @GetMapping("/bondtrades/for/{user_id}/notsettled")
-    public List<Trade> getBondTradesNotSettled(@PathVariable int user_id) {
+    public List<Trade> getBondTradesNotSettled(@PathVariable String user_id) {
         return bondTradesService.getBondTradesNotSettled(user_id);
     }
 

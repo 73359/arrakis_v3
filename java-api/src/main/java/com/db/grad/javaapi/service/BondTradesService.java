@@ -23,22 +23,22 @@ public class BondTradesService implements iBondTradesService {
     }
 
     @Override
-    public List<Trade> getBondTradesForUser(int user_id) {
+    public List<Trade> getBondTradesForUser(String user_id) {
         return bondServiceRepository.getBondTradesForUser(user_id);
     }
 
     @Override
-    public List<Trade> getBondTradesDueToMature(int user_id) {
+    public List<Trade> getBondTradesDueToMature(String user_id) {
         return bondServiceRepository.getBondTradesDueToMature(user_id);
     }
 
     @Override
-    public List<Trade> getBondTradesNotSettled(int user_id) {
+    public List<Trade> getBondTradesNotSettled(String user_id) {
         return null;
     }
 
     @Override
-    public List<Trade> getBondTradesMatured(int user_id) {
+    public List<Trade> getBondTradesMatured(String user_id) {
         return null;
     }
 

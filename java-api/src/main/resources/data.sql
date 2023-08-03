@@ -5,10 +5,12 @@ INSERT INTO book (name) VALUES ('trading_book_4');
 INSERT INTO book (name) VALUES ('trading_book_5');
 INSERT INTO book (name) VALUES ('trading_book_6');
 
-INSERT INTO users (name, email) VALUES ('username', 'user@mail.de');
+INSERT INTO users (user_id, name, email) VALUES ('qSa8IIl8FCWduqTjKPnfdBL9Ll43', 'elena', 'elena@db.com');
+INSERT INTO users (user_id, name, email) VALUES ('4Sx48scfdxUeoa6SfQeOGlbxX502', 'carls', 'carls@db.com');
+INSERT INTO users (user_id, name, email) VALUES ('a167ofrXWwa546yzPnG3Y5QECqh2', 'james', 'james@db.com');
 
-INSERT INTO book_users (book_id, user_id) VALUES ((SELECT book_id from book where name='trading_book_1'), (SELECT user_id from users where name='username'));
-INSERT INTO book_users (book_id, user_id) VALUES ((SELECT book_id from book where name='trading_book_6'), (SELECT user_id from users where name='username'));
+INSERT INTO book_users (book_id, user_id) VALUES ((SELECT book_id from book where name='trading_book_1'), (SELECT user_id from users where name='elena'));
+INSERT INTO book_users (book_id, user_id) VALUES ((SELECT book_id from book where name='trading_book_6'), (SELECT user_id from users where name='elena'));
 
 INSERT INTO security (isin, cusip, issuer_name, coupon_percent, bond_currency, face_value, maturity_date, status, type) VALUES ('XS1988387210', '', 'BNPParibasIssu 4,37% Microsoft Corp (USD)', 4.37, 'USD', 1000, '2023-08-05', 'active', 'CORP');
 INSERT INTO security (isin, cusip, issuer_name, coupon_percent, bond_currency, face_value, maturity_date, status, type) VALUES ('USN0280EAR64', '123456780', 'Airbus 3.15%  USD', 3.15, 'USD', 900, '2023-07-30', 'active', 'CORP');

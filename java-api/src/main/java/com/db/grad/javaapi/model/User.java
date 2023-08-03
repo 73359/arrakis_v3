@@ -10,16 +10,16 @@ import javax.persistence.Table;
 public class User
 {
     @Id
-    private int id;
+    private String id;
     private String name;
     private String email;
 
     @Id
     @Column(name = "user_id", nullable = false)
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
