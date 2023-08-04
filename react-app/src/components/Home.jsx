@@ -24,7 +24,6 @@ const Home = () => {
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Book Name</th>
                         <th>Status</th>
                         <th>Quantity</th>
                         <th>Unit Price</th>
@@ -38,7 +37,6 @@ const Home = () => {
                         {data.map((row) => (
                             <tr key={row.id}>
                                 <td>{row.id}</td>
-                                <td> Trading Book {row.book_id}</td>
                                 <td><span style={row.trade_status==='open'? {color:'green' }: 'red'}>{row.trade_status}</span> </td>
                                 <td>{row.quantity}</td>
                                 <td>{row.unit_price}</td>

@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes  } from "react-router-dom"
 //import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import { Layout } from './components/Layout';
-import { Trades} from './components/Trades'
+import { Bonds} from './components/Bonds'
 
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
         <section>
           <Routes>
           <Route path="/login" element={<Login/>}/>
-            <Route 
+            {/* <Route 
               path="/home"
               element={
                 <Layout>
@@ -24,14 +24,13 @@ const App = () => {
                 </Layout>
               
               }
-            />
+            /> */}
             <Route 
-              path="/trades"
+              path="/home"
               element={
                 <Layout>
-                  < Trades />
+                  <Bonds />
                 </Layout>
-              
               }
             />
           </Routes>

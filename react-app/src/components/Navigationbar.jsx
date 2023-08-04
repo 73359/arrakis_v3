@@ -43,8 +43,7 @@ export const Navigationbar = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link as={NavLink} to='/home'>Home</Nav.Link>
-                        <Nav.Link as={NavLink} to='/trades'>Trades</Nav.Link>
+                        <Nav.Link as={NavLink} to='/home'>Bonds</Nav.Link>
                     </Nav>
                     <div className="navUserName">
                         Hello {userName} 
