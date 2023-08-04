@@ -5,6 +5,9 @@ import { Login } from "./components/Login"
 import { BrowserRouter as Router, Route, Routes  } from "react-router-dom"
 //import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+import { Layout } from './components/Layout';
+import { Trades} from './components/Trades'
+
 
 const App = () => {
   return (
@@ -12,9 +15,25 @@ const App = () => {
       <div>
         <section>
           <Routes>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/home" element={<Home/>}/>
-            <Route path="/" element={<Login/>}/>
+          <Route path="/login" element={<Login/>}/>
+            <Route 
+              path="/home"
+              element={
+                <Layout>
+                  < Home />
+                </Layout>
+              
+              }
+            />
+            <Route 
+              path="/trades"
+              element={
+                <Layout>
+                  < Trades />
+                </Layout>
+              
+              }
+            />
           </Routes>
         </section>
       </div>
