@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -56,6 +58,14 @@ public class BondsService implements iBondsService {
 
     @Override
     public List<Security> getBondsDueToMature(){
-        return securityRepository.getBondsDueToMature();
+
+        List<Security> bonds=securityRepository.getBondsDueToMature();
+        Collections.sort(bonds, new Comparator<Security>() {
+            @Override
+            public int compare(Security b1, Security b2) {
+                return b1.getMaturity_date().compareTo(b2.getMaturity_date());
+            }
+        });
+        return bonds;
     }
 }

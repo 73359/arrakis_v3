@@ -16,9 +16,9 @@ public class Trade {
     private String trade_type;
     private String trade_currency;
     private int quantity;
-    private String trade_settlement_date; //TODO which date or String?
+    private String trade_settlement_date;
     private String trade_status;
-    private String trade_date; //TODO which date or String?
+    private String trade_date;
     private float unit_price;
 
     @Id
