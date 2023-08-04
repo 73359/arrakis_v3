@@ -1,13 +1,10 @@
 package com.db.grad.javaapi.repository;
 
-import com.db.grad.javaapi.model.Security;
 import com.db.grad.javaapi.model.Trade;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -24,7 +21,14 @@ public interface BondServiceRepository extends JpaRepository<Trade, Integer> {
             "WHERE u.user_id = :user_id " +
             "AND s.maturity_date BETWEEN " +
             "CURRENT_DATE - INTERVAL '5' DAY AND CURRENT_DATE + INTERVAL '5' DAY")
-    List<Trade> getBondTradesDueToMature(@Param("user_id") String userId);
+    List<Trade> getBondTradesDueToMature(String user_id);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM Trades t " +
+            "JOIN book_users bu ON t.book_id = bu.book_id " +
+            "JOIN users u ON bu.user_id = u.user_id " +
+            "WHERE u.user_id = :user_id " +
+            "AND t.trade_settlement_date < CURRENT_DATE")
+    List<Trade> getBondTradesNotSettled(String user_id);
 
     @Query(nativeQuery = true, value = "SELECT * FROM Trades t " +
             "JOIN book_users bu ON t.book_id = bu.book_id " +
@@ -33,7 +37,4 @@ public interface BondServiceRepository extends JpaRepository<Trade, Integer> {
             "WHERE u.user_id = :user_id " +
             "AND s.maturity_date <= CURRENT_DATE")
     List<Trade> getBondTradesMatured(String user_id);
-
-    @Query(nativeQuery = true, value = "SELECT * FROM SECURITY  WHERE status = 'active'")
-    List<Security> getActiveBonds();
 }
