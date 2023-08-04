@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BondServiceRepository extends JpaRepository<Trade, Integer> {
+public interface TradesRepository extends JpaRepository<Trade, Integer> {
 
     @Query(nativeQuery = true, value = "select * from trades where book_id in" +
             "(select book_id from book_users where user_id like :user_id)")
