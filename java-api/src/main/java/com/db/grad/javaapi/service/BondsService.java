@@ -1,12 +1,13 @@
 package com.db.grad.javaapi.service;
 
+import com.db.grad.javaapi.model.Counterparty;
 import com.db.grad.javaapi.model.Security;
 import com.db.grad.javaapi.model.Trade;
+import com.db.grad.javaapi.repository.CounterpartyRepository;
 import com.db.grad.javaapi.repository.TradesRepository;
 import com.db.grad.javaapi.repository.SecurityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,11 +18,13 @@ public class BondsService implements iBondsService {
 
     private TradesRepository tradesRepository;
     private SecurityRepository securityRepository;
+    private CounterpartyRepository counterpartyRepository;
 
     @Autowired
-    public BondsService(TradesRepository theTradesRepository, SecurityRepository theSecurityRepository) {
+    public BondsService(TradesRepository theTradesRepository, SecurityRepository theSecurityRepository, CounterpartyRepository theCounterpartyRepository) {
         tradesRepository = theTradesRepository;
         securityRepository = theSecurityRepository;
+        counterpartyRepository = theCounterpartyRepository;
     }
 
 /**
@@ -67,5 +70,9 @@ public class BondsService implements iBondsService {
             }
         });
         return bonds;
+    }
+
+    public Counterparty getBondholder(int tradeId) {
+        return counterpartyRepository.getBondholder(tradeId);
     }
 }

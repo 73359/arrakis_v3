@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.controller;
 
+import com.db.grad.javaapi.model.Counterparty;
 import com.db.grad.javaapi.model.Security;
 import com.db.grad.javaapi.model.Trade;
 import com.db.grad.javaapi.service.BondsService;
@@ -53,5 +54,10 @@ public class BondsController {
     @GetMapping("/bonds/duetomature")
     public List<Security> getBondsDueToMature() {
         return bondsService.getBondsDueToMature();
+    }
+
+    @GetMapping("/bondholder/{trade_id}")
+    public Counterparty getBondholder(@PathVariable int trade_id) {
+        return bondsService.getBondholder(trade_id);
     }
 }
