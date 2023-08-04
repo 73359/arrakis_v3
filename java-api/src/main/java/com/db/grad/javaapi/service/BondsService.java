@@ -1,7 +1,9 @@
 package com.db.grad.javaapi.service;
 
+import com.db.grad.javaapi.model.Security;
 import com.db.grad.javaapi.model.Trade;
 import com.db.grad.javaapi.repository.TradesRepository;
+import com.db.grad.javaapi.repository.SecurityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +13,13 @@ import java.util.List;
 public class BondsService implements iBondsService {
 
     private TradesRepository tradesRepository;
+    private SecurityRepository securityRepository;
 
     @Autowired
-    public BondsService(TradesRepository theTradesRepository) {
+    public BondsService(TradesRepository theTradesRepository, SecurityRepository theSecurityRepository) {
         tradesRepository = theTradesRepository;
-    };
+        securityRepository = theSecurityRepository;
+    }
 
     @Override
     public List<Trade> getAllBondTrades() {
@@ -42,4 +46,7 @@ public class BondsService implements iBondsService {
         return tradesRepository.getBondTradesMatured(user_id);
     }
 
+    public List<Security> getActiveBonds(){
+        return securityRepository.getActiveBonds();
+    }
 }
