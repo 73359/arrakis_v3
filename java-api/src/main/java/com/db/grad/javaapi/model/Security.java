@@ -16,7 +16,7 @@ public class Security {
     private float coupon_percent;
     private String bond_currency;
     private float face_value;
-    private String maturity_date; //TODO which date or String?
+    private String maturity_date;
     private String status;
     private String type;
 
