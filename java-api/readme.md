@@ -9,6 +9,7 @@ The Bonds API is a Java-based API that provides various endpoints to manage and 
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
+- [Testing](#testing)
 
 ## Technologies
 
@@ -16,6 +17,7 @@ The Bonds API is a Java-based API that provides various endpoints to manage and 
 - Spring Boot
 - Spring Data JPA
 - JUnit
+- Mockito
 - Maven
 
 ## Getting Started
