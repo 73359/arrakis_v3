@@ -1,136 +1,102 @@
-# Dogs APIs
+# Bonds API
 
-![dogs](dogs_api.jpg)
+The Bonds API is a Java-based API that provides various endpoints to manage and retrieve information related to bonds, trades, and counterparties.
 
-In this example, we are creating crud operations and exposing them through REST APIs so that UI clients can invoke these operations. The demo operations enable the clients to modify the dogs records in database.
+## Table of Contents
 
-The purpose of this demo is to showcase the nuts and bolts, which make this interaction possible, not covering the complexity in business logic involved in real world applications.
+- [Technologies](#technologies)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
 
+## Technologies
 
-# Let's get the back-end running!
+- Java
+- Spring Boot
+- Hibernate
+- Spring Data JPA
+- JUnit
+- Mockito
+- Maven
 
+## Getting Started
 
-## Prerequisites
+To get started with the project, make sure you have Java and Maven installed on your machine. Clone the repository to your local system.
 
+## Installation
 
-### (You should already have most of this set up during training)
+1. Clone the repository:
 
-1.Download and Install OpenJDK 13 ([OpenJDK](http://jdk.java.net/java-se-ri/13)). For installation instructions, refer this [link](https://www.codejava.net/java-se/download-and-install-jdk-13-openjdk-and-oracle-jdk)
+```
+git clone https://github.com/73359/arrakis_v3.git
+cd arrakis_v3
+```
 
-Make sure following Environment Variables are defined:
+2. Build the project using Maven:
 
-	JAVA_HOME = G:\JDK\OpenJDK\jdk-13
-	
-	PATH = %JAVA_HOME%\bin;…
+```
+mvn clean install
+```
 
-2.Download and Install ([Maven](https://maven.apache.org/install.html))
+3. Run the application:
 
-   
-# Getting Started
-In this example, we’re gonna build a Spring Boot Rest CRUD API example with Maven that use Spring Data JPA to interact with MySQL/H2 database. You will know:
+```
+mvn spring-boot:run
+```
 
-a. How to configure Spring Data, JPA, Hibernate to work with Database
+The API server will start, and you can access it at `http://localhost:8080/api/v1/`.
 
-b. How to define Data Models and Repository interfaces
+## Usage
 
-c. Way to create Spring Rest Controller to process HTTP requests
+The Bonds API provides various endpoints to interact with the data. You can use tools like Postman or cURL to make HTTP requests to the API. The API supports the following endpoints:
 
-d. Way to use Spring Data JPA to interact with H2/MySQL Database
+- `GET /api/v1/bonds/active`: Get a list of active bonds.
+- `GET /api/v1/bonds/{security_id}/trades/for/{user_id}`: Get trades for a specific bond and user.
+- `GET /api/v1/bonds/duetomature`: Get a list of bonds due to mature soon.
+- `GET /api/v1/bondholder/{trade_id}`: Get the counterparty (bond holder) for a specific trade.
+- `GET /api/v1/bonds/from/responsible/books/{user_id}`: Get bonds from the responsible books for a user.
 
-# Project Flow
+## API Endpoints
 
-![This is an image](Business-Service-Controller-and-Repository.jpg)
+### Get Active Bonds
 
+```
+GET /api/v1/bonds/active
+```
 
-# What is the CRUD operation?
-The CRUD stands for Create, Read/Retrieve, Update, and Delete. These are the four basic functions of the persistence storage.
+Returns a list of active bonds.
 
-The CRUD operation can be defined as user interface conventions that allow view, search, and modify information through computer-based forms and reports. CRUD is data-oriented and the standardized use of HTTP action verbs. HTTP has a few important verbs.
+### Get Bond Trades
 
-Within a database, each of these operations maps directly to a series of commands. However, their relationship with a RESTful API is slightly more complex.
+```
+GET /api/v1/bonds/{security_id}/trades/for/{user_id}
+```
 
-Standard CRUD Operation:
+Returns trades for a specific bond and user.
 
-![curd](curd.PNG)
+### Get Bonds Due to Mature
 
-The CRUD operations refer to all major functions that are implemented in relational database applications. Each letter of the CRUD can map to a SQL statement and HTTP methods.
+```
+GET /api/v1/bonds/duetomature
+```
 
-# Database 
+Returns a list of bonds due to mature soon.
 
-H2 is an open-source lightweight Java database. It can be embedded in Java applications or run in the client-server mode
+### Get Bondholder
 
-**Schema**
+```
+GET /api/v1/bondholder/{trade_id}
+```
 
-For this example we have a table called dog. Table is automatically created when springboot application starts using following schema.sql
+Returns the counterparty (bond holder) for a specific trade.
 
-	java-api\src\main\resources\schema.sql
+### Get Bonds from Responsible Books
 
-You can modify this file to add new database tables.
+```
+GET /api/v1/bonds/from/responsible/books/{user_id}
+```
 
-**Data**
+Returns bonds from the responsible books for a user.
 
-To populate data into table dog, we have used data.sql which has insert statements.
-
-	java-api\src\main\resources\data.sql
-
-**Database Connection Details**
-
-Connection details are mentioned in the application.properties 
-
-	java-api\src\main\resources\application.properties
-
-
-# Steps to run the project on local machine
-
-Git clone the code to local machine
-
-	DELL@DESKTOP-ORE3T13 MINGW64 /c/DEV/GITHUB/project-arrakis/skeleton/java-api (java-skeleton)
-	$ pwd
-	/c/DEV/GITHUB/project-arrakis/skeleton/java-api
-
-To run the maven project use following mvn command
-
-	DELL@DESKTOP-ORE3T13 MINGW64 /c/DEV/GITHUB/project-arrakis/skeleton/java-api (java-skeleton)
-	$ mvn clean spring-boot:run
-
-**Once project is running :**
-
-**REST API are exposed as:**
-
-	http://localhost:8080/api/v1/dogs
-
-![REST API](REST_API_URL.PNG)
-
-**H2 Database Console:**
-
-	http://localhost:8080/h2-console
-	
-![H2 Console](H2_CONSOLE.PNG)
-
-![H2 Console 2](H2_CONSOLE2.PNG)
-
-
-**Swagger Console**
-
-Swagger2 is an open source project used to generate the REST API documents for RESTful web services. It provides a user interface to access our RESTful web services via the web browser. 
-
-You also test the APIs using this.
-
-![Swagger](SWAGGER.PNG)
-	
-
-### Reference Documentation
-For further reference, please consider the following sections:
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#boot-features-developing-web-applications)
-
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-
+---
