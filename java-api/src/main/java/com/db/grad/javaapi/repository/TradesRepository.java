@@ -9,7 +9,13 @@ import java.util.List;
 
 @Repository
 public interface TradesRepository extends JpaRepository<Trade, Integer> {
+    @Query(nativeQuery = true, value = "SELECT * FROM trades t " +
+            "WHERE security_id = :security_id " +
+            "AND book_id IN " +
+            "(SELECT book_id FROM book_users WHERE user_id LIKE :user_id)")
+    List<Trade> getBondTrades(int security_id, String user_id);
 
+/**
     @Query(nativeQuery = true, value = "select * from trades where book_id in" +
             "(select book_id from book_users where user_id like :user_id)")
     List<Trade> getBondTradesForUser(String user_id);
@@ -37,4 +43,5 @@ public interface TradesRepository extends JpaRepository<Trade, Integer> {
             "WHERE u.user_id = :user_id " +
             "AND s.maturity_date <= CURRENT_DATE")
     List<Trade> getBondTradesMatured(String user_id);
+*/
 }
