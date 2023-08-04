@@ -60,4 +60,9 @@ public class BondsController {
     public Counterparty getBondholder(@PathVariable int trade_id) {
         return bondsService.getBondholder(trade_id);
     }
+
+    @GetMapping("/bonds/from/responsible/books/{user_id}")
+    public List<Security> getBondsFromResponsibleBooks(@PathVariable String user_id) {
+        return bondsService.getBondsFromResponsibleBooks(user_id);
+    }
 }

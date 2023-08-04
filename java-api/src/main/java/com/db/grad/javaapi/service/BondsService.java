@@ -72,7 +72,11 @@ public class BondsService implements iBondsService {
         return bonds;
     }
 
-    public Counterparty getBondholder(int tradeId) {
-        return counterpartyRepository.getBondholder(tradeId);
+    public Counterparty getBondholder(int trade_id) {
+        return counterpartyRepository.getBondholder(trade_id);
+    }
+
+    public List<Security> getBondsFromResponsibleBooks(String user_id) {
+        return securityRepository.getBondsFromResponsibleBooks(user_id);
     }
 }

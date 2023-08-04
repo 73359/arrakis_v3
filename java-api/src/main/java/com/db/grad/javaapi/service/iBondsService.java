@@ -17,8 +17,9 @@ public interface iBondsService
 <<<<<<< HEAD
  */
 
-    public List<Security> getActiveBonds();
-    public List<Trade> getBondTrades(int security_id, String user_id);
-    public List<Security> getBondsDueToMature();
-    public Counterparty getBondholder(int tradeId);
+    List<Security> getActiveBonds();
+    List<Trade> getBondTrades(int security_id, String user_id);
+    List<Security> getBondsDueToMature();
+    Counterparty getBondholder(int tradeId);
+    List<Security> getBondsFromResponsibleBooks(String user_id);
 }
