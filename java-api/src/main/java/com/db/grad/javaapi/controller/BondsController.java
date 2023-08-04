@@ -48,4 +48,9 @@ public class BondsController {
     public List<Security> getActiveBonds() {
         return bondsService.getActiveBonds();
     }
+
+    @GetMapping("/bonds/duetomature")
+    public List<Security> getBondsDueToMature() {
+        return bondsService.getBondsDueToMature();
+    }
 }

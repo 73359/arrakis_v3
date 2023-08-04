@@ -49,4 +49,9 @@ public class BondsService implements iBondsService {
     public List<Security> getActiveBonds(){
         return securityRepository.getActiveBonds();
     }
+
+    @Override
+    public List<Security> getBondsDueToMature(){
+        return securityRepository.getBondsDueToMature();
+    }
 }
