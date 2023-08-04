@@ -16,7 +16,7 @@ const App = () => {
         <section>
           <Routes>
           <Route path="/login" element={<Login/>}/>
-            {/* <Route 
+            <Route 
               path="/home"
               element={
                 <Layout>
@@ -24,15 +24,15 @@ const App = () => {
                 </Layout>
               
               }
-            /> */}
-            <Route 
+            />
+            {/* <Route 
               path="/home"
               element={
                 <Layout>
                   <Bonds />
                 </Layout>
               }
-            />
+            /> */}
           </Routes>
         </section>
       </div>

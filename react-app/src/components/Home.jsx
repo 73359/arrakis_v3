@@ -1,55 +1,85 @@
-import React, { useEffect, useState } from 'react';
-import {getAllTrades} from "../services/MTServices"
-import { Table } from 'react-bootstrap';
+import React, {useEffect, useState} from 'react'
+import {Row , ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../services/firebaseService";
+import {getAllBonds, getBondTrades, getBondsDueToMature} from '../services/MTServices'
+import BondTable from './BondTable'
 
-const Home = () => {
-    const [data, setData] = useState([])
-    const getAllTradesFromAPI = () => {
-        getAllTrades()
-        .then((res) => setData(res.data))
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-        });
-    }
+
+function Home() {
+    const [bonds, setBonds] = useState([])
+    const [BondsDueToMature, setBondsDueToMature] = useState([])
+    const [userId, setUserId] = useState('')
 
     useEffect(()=>{
-        getAllTradesFromAPI();
+        onAuthStateChanged(auth, (user) => {
+            if(user) {
+                setUserId(user.uid)
+            }
+          });
     },[])
- 
+
+    const handleChange = (categoryID) => {
+        switch(categoryID){
+            case 1:
+                // TODO Remove user form getAllBonds
+                getAllBonds(userId)
+                .then((res)=>setBonds(res.data))
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode, errorMessage);
+                    
+                });
+                console.log(bonds)
+                break;
+            case 2:
+                // TODO Implementation pending
+                break;
+            case 3:
+                getBondsDueToMature()
+                .then((res)=>setBonds(res.data))
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode, errorMessage);
+                    
+                });
+                console.log(BondsDueToMature)
+                break;
+            default:
+                getAllBonds(userId)
+                .then((res)=>setBonds(res.data))
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode, errorMessage);
+                    
+                });
+                console.log(bonds)
+            }
+        }
+
     return (
-        <div>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Status</th>
-                        <th>Quantity</th>
-                        <th>Unit Price</th>
-                        <th>Currency</th>
-                        <th>Buy/Sell</th>
-                        <th>Trade Date</th>
-                        <th>Settlement Date</th>
-                    </tr>
-                </thead>
-                    <tbody>
-                        {data.map((row) => (
-                            <tr key={row.id}>
-                                <td>{row.id}</td>
-                                <td><span style={row.trade_status==='open'? {color:'green' }: 'red'}>{row.trade_status}</span> </td>
-                                <td>{row.quantity}</td>
-                                <td>{row.unit_price}</td>
-                                <td>{row.trade_currency}</td>
-                                <td>{row.trade_type}</td>
-                                <td>{row.trade_date}</td>
-                                <td>{row.trade_settlement_date}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-            </Table>
-        </div>
-      );
+    <>
+        <Row>
+            <ToggleButtonGroup type="radio" name="options" defaultValue={1} onChange={handleChange}>
+                <ToggleButton id="all_bonds" value={1} size="lg" variant ="dark">
+                    All Bonds
+                </ToggleButton>
+                <ToggleButton id="users_bonds" value={2} size="lg" variant ="dark">
+                    Owned Bonds
+                </ToggleButton>
+                <ToggleButton id="matuaring Bonds" value={3} size="lg" variant ="dark">
+                    Maturing Bonds 
+                </ToggleButton>
+            </ToggleButtonGroup>
+        </Row>
+        <Row>
+            <BondTable data = {bonds} userid={userId}/>
+        </Row>
+    </>
+    );
 }
- 
-export default Home
+
+export default Home;

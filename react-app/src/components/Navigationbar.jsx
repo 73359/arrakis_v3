@@ -33,9 +33,9 @@ export const Navigationbar = () => {
 
     return (
     <>
-        <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark" sticky="top">
+        <Navbar expand="lg" className="bg-body-tertiary mb-2" bg="dark" data-bs-theme="dark" sticky="top">
             <Container fluid>
-                <Navbar.Brand>Matuarity Tracking Service</Navbar.Brand>
+                <Navbar.Brand>Bond Tracking Service</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav

@@ -26,7 +26,7 @@ export const TradeDetails = (props) => {
                             <th>Bond Holder</th>
                             <th>Trade Type</th>
                             <th>Trade Currency</th>
-                            <th>Quatity</th>
+                            <th>Quantity</th>
                             <th>Trade settlement Date</th>
                             <th>Trade Status</th>
                             <th>Trade date</th>
