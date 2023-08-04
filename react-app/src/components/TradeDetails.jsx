@@ -1,18 +1,10 @@
 import React from 'react'
 import { Modal, Button, Table } from 'react-bootstrap';
+
 export const TradeDetails = (props) => {
-    console.log(props.id,"security id");
-    const dummy_data = {
-        trade_id: 1, 	
-        trade_type: 1,
-        trade_currency:1,
-        quantity:1,
-        trade_settlement_date:1,
-        trade_status:1,
-        trade_date:1,
-        unit_price :1,
-        bond_holder:1,
-    };
+    const bondTrades = props.data
+    console.log(bondTrades,"row");
+
 
     return (
         <Modal
@@ -42,17 +34,20 @@ export const TradeDetails = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr key={dummy_data.trade_id}>
-                            <td>{dummy_data.trade_id}</td>
-                            <td>{dummy_data.bond_holder}</td>
-                            <td>{dummy_data.trade_type}</td>
-                            <td>{dummy_data.currency}</td>
-                            <td>{dummy_data.quantity}</td>
-                            <td>{dummy_data.trade_settlement_date}</td>
-                            <td>{dummy_data.trade_status}</td>
-                            <td>{dummy_data.trade_date}</td>
-                            <td>{dummy_data.unit_price}</td>
+                        {bondTrades.map((row) => (
+                            <tr key={row.id}>
+                            <td>{row.id}</td>
+                            <td>Bond Holder</td>
+                            <td>{row.trade_type}</td>
+                            <td>{row.trade_currency}</td>
+                            <td>{row.quantity}</td>
+                            <td>{row.trade_settlement_date}</td>
+                            <td>{row.trade_status}</td>
+                            <td>{row.trade_date}</td>
+                            <td>{row.unit_price}</td>
                         </tr>
+                        ))}
+                        
                     </tbody>
                 </Table>
             </Modal.Body>
