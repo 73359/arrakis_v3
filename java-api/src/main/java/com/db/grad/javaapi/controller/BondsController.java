@@ -19,28 +19,7 @@ public class BondsController {
     public BondsController(BondsService theBondsService) {
         bondsService = theBondsService;
     }
-/**
-    @GetMapping("/bondtrades")
-    public List<Trade> getAllBondTrades() {
-        return bondsService.getAllBondTrades();
-    }
-    @GetMapping("/bondtrades/for/{user_id}")
-    public List<Trade> getBondTradesForUser(@PathVariable String user_id) {
-        return bondsService.getBondTradesForUser(user_id);
-    }
-    @GetMapping("/bondtrades/for/{user_id}/duetomature")
-    public List<Trade> getBondTradesDueToMature(@PathVariable String user_id) {
-        return bondsService.getBondTradesDueToMature(user_id);
-    }
-    @GetMapping("/bondtrades/for/{user_id}/notsettled")
-    public List<Trade> getBondTradesNotSettled(@PathVariable String user_id) {
-        return bondsService.getBondTradesNotSettled(user_id);
-    }
-    @GetMapping("/bondtrades/for/{user_id}/matured")
-    public List<Trade> getBondTradesMatured(@PathVariable String user_id) {
-        return bondsService.getBondTradesMatured(user_id);
-    }
- */
+
     @GetMapping("/bonds/active")
     public List<Security> getActiveBonds() {
         return bondsService.getActiveBonds();

@@ -26,29 +26,7 @@ public class BondsService implements iBondsService {
         securityRepository = theSecurityRepository;
         counterpartyRepository = theCounterpartyRepository;
     }
-
-/**
-    @Override
-    public List<Trade> getAllBondTrades() {
-        return tradesRepository.findAll();
-    }
-    @Override
-    public List<Trade> getBondTradesForUser(String user_id) {
-        return tradesRepository.getBondTradesForUser(user_id);
-    }
-    @Override
-    public List<Trade> getBondTradesDueToMature(String user_id) {
-        return tradesRepository.getBondTradesDueToMature(user_id);
-    }
-    @Override
-    public List<Trade> getBondTradesNotSettled(String user_id) {
-        return tradesRepository.getBondTradesNotSettled(user_id);
-    }
-    @Override
-    public List<Trade> getBondTradesMatured(String user_id) {
-        return tradesRepository.getBondTradesMatured(user_id);
-    }
-*/
+    
     @Override
     public List<Security> getActiveBonds(){
         return securityRepository.getActiveBonds();

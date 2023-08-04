@@ -8,15 +8,6 @@ import java.util.List;
 
 public interface iBondsService
 {
-/**
-    public List<Trade> getAllBondTrades();
-    public List<Trade> getBondTradesForUser(String user_id);
-    public List<Trade> getBondTradesDueToMature(String user_id);
-    public List<Trade> getBondTradesNotSettled(String user_id);
-    public List<Trade> getBondTradesMatured(String user_id);
-<<<<<<< HEAD
- */
-
     List<Security> getActiveBonds();
     List<Trade> getBondTrades(int security_id, String user_id);
     List<Security> getBondsDueToMature();
