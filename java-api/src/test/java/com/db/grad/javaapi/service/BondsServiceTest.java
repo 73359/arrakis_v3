@@ -13,9 +13,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
@@ -69,20 +70,28 @@ public class BondsServiceTest {
         assertEquals(bondTrades, result);
     }
 
-    /**
     @Test
     public void testGetBondsDueToMature() {
-        List<Security> dueToMatureBonds = new ArrayList<>();
-        // Add some test data to the list
-        dueToMatureBonds.add(new Security());
-        dueToMatureBonds.add(new Security());
+        // Create sample securities with valid maturity dates
+        Security firstMaturedSecurity = new Security("2023-08-10");
+        Security secondMaturedSecurity = new Security("2023-08-15");
+        Security lastMaturedSecurity = new Security("2023-08-20");
 
-        when(securityRepository.getBondsDueToMature()).thenReturn(dueToMatureBonds);
+        List<Security> securities = Arrays.asList(secondMaturedSecurity, lastMaturedSecurity, firstMaturedSecurity);
+        System.out.println(securities.get(0).getMaturity_date() + " ||| " + securities.get(1).getMaturity_date() + " ||| " + securities.get(2).getMaturity_date());
 
+        // Mock the security repository to return the list of securities
+        when(securityRepository.getBondsDueToMature()).thenReturn(securities);
+
+        // Call the service method
         List<Security> result = bondsService.getBondsDueToMature();
-
-        assertEquals(dueToMatureBonds, result);
-    }*/
+        System.out.println(result.get(0).getMaturity_date() + " ||| " + result.get(1).getMaturity_date() + " ||| " + result.get(2).getMaturity_date());
+        
+        // Assertions
+        assertEquals(firstMaturedSecurity, result.get(0));
+        assertEquals(secondMaturedSecurity, result.get(1));
+        assertEquals(lastMaturedSecurity, result.get(2));
+    }
 
     @Test
     public void testGetBondholder() {
