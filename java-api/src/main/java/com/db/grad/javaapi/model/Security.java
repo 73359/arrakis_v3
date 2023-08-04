@@ -1,5 +1,7 @@
 package com.db.grad.javaapi.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,9 +18,17 @@ public class Security {
     private float coupon_percent;
     private String bond_currency;
     private float face_value;
-    private String maturity_date; //TODO which date or String?
+    private String maturity_date;
     private String status;
     private String type;
+
+    @Autowired
+    public Security(String maturity_date) {
+        this.maturity_date = maturity_date;
+    }
+    @Autowired
+    public Security() {
+    }
 
     @Id
     @Column(name = "security_id", nullable = false)
