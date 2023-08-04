@@ -14,8 +14,10 @@ public interface iBondsService
     public List<Trade> getBondTradesDueToMature(String user_id);
     public List<Trade> getBondTradesNotSettled(String user_id);
     public List<Trade> getBondTradesMatured(String user_id);
+<<<<<<< HEAD
  */
 
     public List<Security> getActiveBonds();
     public List<Trade> getBondTrades(int security_id, String user_id);
+    public List<Security> getBondsDueToMature();
 }

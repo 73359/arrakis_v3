@@ -10,6 +10,10 @@ import java.util.List;
 @Repository
 public interface SecurityRepository extends JpaRepository<Security, Integer> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM SECURITY  WHERE status = 'active'")
+    @Query(nativeQuery = true, value = "SELECT * FROM SECURITY WHERE status = 'active'")
     List<Security> getActiveBonds();
+
+    @Query(nativeQuery = true, value = "SELECT * FROM SECURITY WHERE maturity_date BETWEEN " +
+            "CURRENT_DATE - INTERVAL '5' DAY AND CURRENT_DATE + INTERVAL '5' DAY")
+    List<Security> getBondsDueToMature();
 }

@@ -53,4 +53,9 @@ public class BondsService implements iBondsService {
     public List<Trade> getBondTrades(int security_id, String user_id) {
         return tradesRepository.getBondTrades(security_id, user_id);
     }
+
+    @Override
+    public List<Security> getBondsDueToMature(){
+        return securityRepository.getBondsDueToMature();
+    }
 }

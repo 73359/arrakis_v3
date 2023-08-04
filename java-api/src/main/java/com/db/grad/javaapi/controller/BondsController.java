@@ -49,4 +49,9 @@ public class BondsController {
     public List<Trade> getBondTrades(@PathVariable int security_id, @PathVariable String user_id) {
         return bondsService.getBondTrades(security_id, user_id);
     }
+
+    @GetMapping("/bonds/duetomature")
+    public List<Security> getBondsDueToMature() {
+        return bondsService.getBondsDueToMature();
+    }
 }
