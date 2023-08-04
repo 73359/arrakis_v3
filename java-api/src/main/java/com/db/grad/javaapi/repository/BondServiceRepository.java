@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.repository;
 
+import com.db.grad.javaapi.model.Security;
 import com.db.grad.javaapi.model.Trade;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -33,6 +34,6 @@ public interface BondServiceRepository extends JpaRepository<Trade, Integer> {
             "AND s.maturity_date <= CURRENT_DATE")
     List<Trade> getBondTradesMatured(String user_id);
 
-
-
+    @Query(nativeQuery = true, value = "SELECT * FROM SECURITY  WHERE status = 'active'")
+    List<Security> getActiveBonds();
 }
