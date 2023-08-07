@@ -13,4 +13,5 @@ public interface iBondsService
     List<Security> getBondsDueToMature();
     Counterparty getBondholder(int tradeId);
     List<Security> getBondsFromResponsibleBooks(String user_id);
+    List<Counterparty> getAllBondholder();
 }
