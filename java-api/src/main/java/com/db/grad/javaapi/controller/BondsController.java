@@ -44,4 +44,9 @@ public class BondsController {
     public List<Security> getBondsFromResponsibleBooks(@PathVariable String user_id) {
         return bondsService.getBondsFromResponsibleBooks(user_id);
     }
+
+    @GetMapping("/allbondholder")
+    public List<Counterparty> getAllBondholder() {
+        return bondsService.getAllBondholder();
+    }
 }
