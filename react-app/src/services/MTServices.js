@@ -23,3 +23,7 @@ export const getBondHolder = (trade_id) => {
 export const getBondsFromResponsibleBooks = (userid) => {
     return http.get(`/bonds/from/responsible/books/${userid}`)
 }
+
+export const getAllBondholder = () => {
+    return http.get('/allbondholder')
+}

@@ -9,17 +9,17 @@ export const TradeDetails = (props) => {
     const [bondHolders, setBondHolders] = useState(props.bondHolder)
     var foundBondHolder = {id:'', trade_id:'',trade_id:''}
 
-    useEffect(()=>{
-        setBondHolders(props.bondHolder)
-    },[bondHolders])
 
     console.log(bondHolders,"TradeDetails TradeDetails")
 
-    // function findBondHolder(keyValue) {
-    //     foundBondHolder = props.bondHolder.find(obj => obj.trade_id===keyValue);
-    //     console.log(foundBondHolder,"foundBondHolder",bondHolders)
-    //     return foundBondHolder || {id:'', trade_id:'',bond_holder:''}
-    // }
+    function findBondHolder(keyValue) {
+        console.log(keyValue,"keyValue")
+        foundBondHolder = props.bondHolder.find(obj => obj.id===keyValue);
+        console.log(foundBondHolder,"foundBondHolder")
+        return foundBondHolder['bond_holder']
+        // console.log(foundBondHolder,"foundBondHolder",bondHolders)
+        // return foundBondHolder || {id:'', trade_id:'',bond_holder:''}
+    }
     // console.log(bondHolders,"bondHolders bondHolders bondHolders")
 
 
@@ -57,7 +57,7 @@ export const TradeDetails = (props) => {
                         {bondTrades.map((row, id) => (
                             <tr key={row.id}>
                             <td>{row.id}</td>
-                            <td>{}</td>
+                            <td>{findBondHolder(row.counterparty_id)}</td>
                             <td>{row.trade_type}</td>
                             <td>{row.trade_currency}</td>
                             <td>{row.quantity}</td>
