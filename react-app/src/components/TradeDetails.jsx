@@ -1,40 +1,25 @@
-import React,{useEffect, useState} from 'react'
+import React from 'react'
 import { Modal, Button, Table, Alert } from 'react-bootstrap';
-import {getBondHolder} from '../services/MTServices'
 
 
 export const TradeDetails = (props) => {
     const bondTrades = props.data
-    const allIds = bondTrades.map(trades => trades.id)
-    const [bondHolders, setBondHolders] = useState(props.bondHolder)
-    var foundBondHolder = {id:'', trade_id:'',trade_id:''}
-
-
-    console.log(bondHolders,"TradeDetails TradeDetails")
 
     function findBondHolder(keyValue) {
-        console.log(keyValue,"keyValue")
-        foundBondHolder = props.bondHolder.find(obj => obj.id===keyValue);
-        console.log(foundBondHolder,"foundBondHolder")
+        var foundBondHolder = props.bondHolder.find(obj => obj.id===keyValue);
         return foundBondHolder['bond_holder']
-        // console.log(foundBondHolder,"foundBondHolder",bondHolders)
-        // return foundBondHolder || {id:'', trade_id:'',bond_holder:''}
     }
-    // console.log(bondHolders,"bondHolders bondHolders bondHolders")
 
-
-
-    console.log(bondTrades, "bondTrades")
     return (
         <Modal
             {...props}
-            size="lg"
+            size="xl"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Trades Related to Bond
+                    Trades Related To Bond
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>

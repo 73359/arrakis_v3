@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import { Container, Table, Button } from 'react-bootstrap'
-import {getBondTrades, getBondHolder, getAllBondholder} from '../services/MTServices'
+import {getBondTrades, getAllBondholder} from '../services/MTServices'
 import { TradeDetails } from './TradeDetails'
 
 const BondTable = (props) => {
@@ -9,66 +9,9 @@ const BondTable = (props) => {
     const [modalShow, setModalShow] = useState(false);
     const [bondTrades, setBondTrades] = useState([]);
     const [bondHolder, setBondHolder] = useState([]);
-    const [bondHolderData, setBondHolderData] = useState([]);
-    var bondHolderNames = []
-
-
-
-
-    function getBondHolderFromAPI(trade_id){
-        var bondHolder = ''
-        getBondHolder(trade_id).then((res)=> {bondHolder=res.data.bond_holder})
-        console.log(bondHolder,"bondHolder")
-        return bondHolder
-    }
-
-    // async fetchBondHolder(){
-    //     //b.push({a:5, b:6})
-    //     var allIds = bondTrades.map(trades => trades.id)
-    //     console.log(allIds,"allIds")
-    //     //allIds.map(id => console.log(getBondHolderFromAPI(id),"getBondHolderFromAPI"))
-    // }
-
-    // useEffect(() => {
-    //     (async ()=>{
-    //             const {data} = await getAllBondholder()
-    //             console.log(data,"data")
-    //             setBondHolderData(data);
-    //     })();
-    // });
-
-    // useEffect(()=>{
-        
-    //     async function fetchBondHolder(){
-    //         getAllBondholder().then(res=>setBondHolderData(res.data));
-    //         console.log(bondHolderData)}
-    //     // async function fetchBondHolder(){
-    //     //     if(modalShow){
-    //     //         const allIds = bondTrades.map(trades => trades.id)
-    //     //         allIds.map(id => {
-    //     //             getBondHolder(id).then(res=> {
-    //     //                 let data = res.data;
-    //     //                 data["trade_id"] = id
-    //     //                 bondHolderNames.push(data)
-    //     //                 console.log(data,"data",id)
-    //     //                 // setBondHolders((bondHolders) => [
-    //     //                 //     ...bondHolders,
-    //     //                 //     data,
-    //     //                 //   ]);
-    //     //             })
-    //     //         })
-                
-    //     //         console.log(allIds,"allIds", "bondHolders", bondHolder)
-    //     //     }
-    //     // };
-    //     fetchBondHolder()
-    //     // console.log(bondHolderNames,"bondHolderNames")
-    //     //setBondHolders(bondHolder)
-    // },[setBondHolderData])
 
     function open_modal(id){
         getAllBondholder().then((res)=>setBondHolder(res.data))
-        console.log(bondHolder,"bondHolder bondHolder")
         getBondTrades(userid, id)
         .then(res => {
             setBondTrades(res.data)

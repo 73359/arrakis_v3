@@ -2,14 +2,13 @@ import React, {useEffect, useState} from 'react'
 import {Row , ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../services/firebaseService";
-import {getAllBonds,getAllBondholder, getBondsDueToMature, getBondsFromResponsibleBooks} from '../services/MTServices'
+import {getAllBonds, getBondsDueToMature, getBondsFromResponsibleBooks} from '../services/MTServices'
 import BondTable from './BondTable'
 
 
 function Home() {
-    const [bonds, setBonds] = useState([])
-    const [userId, setUserId] = useState('')
-    const [bondHolder, setBondHolder] = useState([]);
+    const [bonds, setBonds] = useState([]);
+    const [userId, setUserId] = useState('');
 
     useEffect(()=>{
         onAuthStateChanged(auth, (user) => {
