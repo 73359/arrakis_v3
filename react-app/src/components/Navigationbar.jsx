@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Navbar, Nav, Container, Button } from "react-bootstrap";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../services/firebaseService";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Navigationbar = () => {
     const navigate = useNavigate();
@@ -43,7 +43,6 @@ export const Navigationbar = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link as={NavLink} to='/home'>Bonds</Nav.Link>
                     </Nav>
                     <div className="navUserName">
                         Hello {userName} 

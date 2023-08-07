@@ -14,3 +14,12 @@ export const getBondsDueToMature = () => {
     console.log("getBondsDueToMature",`/bonds/duetomature`)
     return http.get('/bonds/duetomature')
 }
+
+export const getBondHolder = (trade_id) => {
+    console.log('Get/bondholder')
+    return http.get(`/bondholder/${trade_id}`)
+}
+
+export const getBondsFromResponsibleBooks = (userid) => {
+    return http.get(`/bonds/from/responsible/books/${userid}`)
+}

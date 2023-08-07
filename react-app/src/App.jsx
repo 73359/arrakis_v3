@@ -3,10 +3,8 @@ import './App.css';
 import React from "react";
 import { Login } from "./components/Login"
 import { BrowserRouter as Router, Route, Routes  } from "react-router-dom"
-//import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import { Layout } from './components/Layout';
-import { Bonds} from './components/Bonds'
 
 
 const App = () => {
@@ -22,17 +20,8 @@ const App = () => {
                 <Layout>
                   < Home />
                 </Layout>
-              
               }
             />
-            {/* <Route 
-              path="/home"
-              element={
-                <Layout>
-                  <Bonds />
-                </Layout>
-              }
-            /> */}
           </Routes>
         </section>
       </div>

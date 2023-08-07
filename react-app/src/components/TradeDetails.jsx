@@ -1,11 +1,30 @@
-import React from 'react'
-import { Modal, Button, Table } from 'react-bootstrap';
+import React,{useEffect, useState} from 'react'
+import { Modal, Button, Table, Alert } from 'react-bootstrap';
+import {getBondHolder} from '../services/MTServices'
+
 
 export const TradeDetails = (props) => {
     const bondTrades = props.data
-    console.log(bondTrades,"row");
+    const allIds = bondTrades.map(trades => trades.id)
+    const [bondHolders, setBondHolders] = useState(props.bondHolder)
+    var foundBondHolder = {id:'', trade_id:'',trade_id:''}
+
+    useEffect(()=>{
+        setBondHolders(props.bondHolder)
+    },[bondHolders])
+
+    console.log(bondHolders,"TradeDetails TradeDetails")
+
+    // function findBondHolder(keyValue) {
+    //     foundBondHolder = props.bondHolder.find(obj => obj.trade_id===keyValue);
+    //     console.log(foundBondHolder,"foundBondHolder",bondHolders)
+    //     return foundBondHolder || {id:'', trade_id:'',bond_holder:''}
+    // }
+    // console.log(bondHolders,"bondHolders bondHolders bondHolders")
 
 
+
+    console.log(bondTrades, "bondTrades")
     return (
         <Modal
             {...props}
@@ -19,7 +38,8 @@ export const TradeDetails = (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Table striped bordered hover>
+                {bondTrades.length?<>
+                    <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -34,10 +54,10 @@ export const TradeDetails = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {bondTrades.map((row) => (
+                        {bondTrades.map((row, id) => (
                             <tr key={row.id}>
                             <td>{row.id}</td>
-                            <td>Bond Holder</td>
+                            <td>{}</td>
                             <td>{row.trade_type}</td>
                             <td>{row.trade_currency}</td>
                             <td>{row.quantity}</td>
@@ -50,9 +70,17 @@ export const TradeDetails = (props) => {
                         
                     </tbody>
                 </Table>
+                </>
+                :
+                    <>
+                        <Alert key="danger" variant="danger">
+                            <b>No Trade Found</b>
+                        </Alert>
+                    </>}
+
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button variant="danger" onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     );

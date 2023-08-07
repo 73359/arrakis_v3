@@ -1,19 +1,73 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Container, Table, Button } from 'react-bootstrap'
-import {getBondTrades} from '../services/MTServices'
+import {getBondTrades, getBondHolder} from '../services/MTServices'
 import { TradeDetails } from './TradeDetails'
 
 const BondTable = (props) => {
     const data = props.data
     const userid = props.userid
     const [modalShow, setModalShow] = useState(false);
-    const [bondTrades, setBondTrades] = useState([])
+    const [bondTrades, setBondTrades] = useState([]);
+    const [bondHolder, setBondHolder] = useState([]);
+    var bondHolderNames = []
+
+
+
+
+    function getBondHolderFromAPI(trade_id){
+        var bondHolder = ''
+        getBondHolder(trade_id).then((res)=> {bondHolder=res.data.bond_holder})
+        console.log(bondHolder,"bondHolder")
+        return bondHolder
+    }
+
+    // async fetchBondHolder(){
+    //     //b.push({a:5, b:6})
+    //     var allIds = bondTrades.map(trades => trades.id)
+    //     console.log(allIds,"allIds")
+    //     //allIds.map(id => console.log(getBondHolderFromAPI(id),"getBondHolderFromAPI"))
+    // }
+
+    useEffect(()=>{
+        
+        async function fetchBondHolder(){
+            if(modalShow){
+                const allIds = bondTrades.map(trades => trades.id)
+                allIds.map(id => {
+                    getBondHolder(id).then(res=> {
+                        let data = res.data;
+                        data["trade_id"] = id
+                        bondHolderNames.push(data)
+                        console.log(data,"data",id)
+                        // setBondHolders((bondHolders) => [
+                        //     ...bondHolders,
+                        //     data,
+                        //   ]);
+                    })
+                })
+                
+                console.log(allIds,"allIds", "bondHolders", bondHolder)
+            }
+        };
+        fetchBondHolder();
+        console.log(bondHolderNames,"bondHolderNames")
+        //setBondHolders(bondHolder)
+    })
 
     function open_modal(id){
+        getBondTrades(userid, id)
+        .then(res => {
+            setBondTrades(res.data)
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            
+        });
         setModalShow(true)
-        return getBondTrades(userid, id)
-        .then(res => setBondTrades(res.data))
     }
+
     return (
         <>
             <Container fluid>
@@ -47,9 +101,11 @@ const BondTable = (props) => {
                                 <td>{row.status}</td>
                                 <td>{row.type}</td>
                                 <td>
-                                    <Button variant="primary" onClick={() => open_modal(row.id)}>
-                                        All Trades
+                                    <div className='text-center'>
+                                    <Button variant="info" onClick={() => open_modal(row.id)}>
+                                        <b className='text-white'>All Trades</b>
                                     </Button>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
@@ -59,6 +115,7 @@ const BondTable = (props) => {
                     show={modalShow}
                     data = {bondTrades}
                     onHide={() => setModalShow(false)}
+                    bondHolder = {bondHolderNames}
                 />
 
             </Container>

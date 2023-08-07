@@ -36,7 +36,7 @@ export const Login = () => {
             <Container >
                 <Row className="justify-content-md-center">
                     <Col md={4}>
-                        <h3>Matuarity Tracking Service</h3>
+                        <h3>Bond Tracking Service</h3>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center">
