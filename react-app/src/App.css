@@ -36,3 +36,58 @@
     transform: rotate(360deg);
   }
 }
+
+.loginForm {
+  margin-top: 90px;
+}
+.navUserName{
+  padding-right: 20px;
+  color: #fff;
+}
+.card{
+  padding-top: 1.5rem;
+  margin-left: 1.5rem;
+  width: 30rem;
+  border: 0;
+}
+.circle{
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+}
+
+.status-circle {
+  width: .8rem;
+  height: .8rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 1px;
+}
+
+.bg-success {
+  background-color: #28a745; /* Green color for active status */
+}
+
+.bg-danger {
+  background-color: #dc3545; /* Red color for inactive status */
+}
+.typeBuySell{
+  margin-left: 1rem;
+}
+.status{
+  margin-left: 2rem;
+}
+
+.row1{
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 2rem
+}
+
+.mainContainer{
+  margin-left: 100px !important;
+  margin-right: 100px !important;
+  margin-top: -5px !important;
+}
