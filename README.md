@@ -1,137 +1,116 @@
-# arrakis_v3
-# Dogs APIs
+### Backend Java Spring Boot Project
 
-![dogs](dogs_api.jpg)
+# Bond Tracking Service - Backend
 
-In this example, we are creating crud operations and exposing them through REST APIs so that UI clients can invoke these operations. The demo operations enable the clients to modify the dogs records in database.
+This is the backend component of the Bond Tracking Service application. It is developed using Java Spring Boot framework to provide API endpoints for managing bond data and related operations.
 
-The purpose of this demo is to showcase the nuts and bolts, which make this interaction possible, not covering the complexity in business logic involved in real world applications.
+## Getting Started
 
+These instructions will help you set up and run the backend of the Bond Tracking Service on your local machine for development and testing purposes.
 
-# Let's get the back-end running!
+### Prerequisites
 
+- Java Development Kit (JDK) 8 or higher
+- Apache Maven
 
-## Prerequisites
+### Installing
 
+1. Clone the repository to your local machine:
 
-### (You should already have most of this set up during training)
+```bash
+git clone https://github.com/73359/arrakis_v3.git
+```
 
-1.Download and Install OpenJDK 13 ([OpenJDK](http://jdk.java.net/java-se-ri/13)). For installation instructions, refer this [link](https://www.codejava.net/java-se/download-and-install-jdk-13-openjdk-and-oracle-jdk)
+2. Navigate to the project directory:
 
-Make sure following Environment Variables are defined:
+```bash
+cd arrakis_v3/java-api
+```
 
-	JAVA_HOME = G:\JDK\OpenJDK\jdk-13
-	
-	PATH = %JAVA_HOME%\bin;…
+3. Build and run the application using Maven:
 
-2.Download and Install ([Maven](https://maven.apache.org/install.html))
+```bash
+mvn spring-boot:run
+```
 
-   
-# Getting Started
-In this example, we’re gonna build a Spring Boot Rest CRUD API example with Maven that use Spring Data JPA to interact with MySQL/H2 database. You will know:
+The backend server will start on `http://localhost:8080`.
 
-a. How to configure Spring Data, JPA, Hibernate to work with Database
+## Features
 
-b. How to define Data Models and Repository interfaces
+- Retrieve active bonds, bond trades, and related information.
+- Filter bonds by different criteria.
+- Fetch bondholder information.
+- Monitor bonds due to mature.
 
-c. Way to create Spring Rest Controller to process HTTP requests
+## Technologies Used
 
-d. Way to use Spring Data JPA to interact with H2/MySQL Database
+- Java Spring Boot
+- Spring Data JPA
+- Swagger UI (API documentation)
+- MySQL (Database)
 
-# Project Flow
+### Frontend React Application
 
-![This is an image](Business-Service-Controller-and-Repository.jpg)
+# Bond Tracking Service - Frontend
 
+This is the frontend component of the Bond Tracking Service application. It is developed using React framework to provide a user-friendly interface for managing bond data and related operations.
 
-# What is the CRUD operation?
-The CRUD stands for Create, Read/Retrieve, Update, and Delete. These are the four basic functions of the persistence storage.
+## Getting Started
 
-The CRUD operation can be defined as user interface conventions that allow view, search, and modify information through computer-based forms and reports. CRUD is data-oriented and the standardized use of HTTP action verbs. HTTP has a few important verbs.
+These instructions will help you set up and run the frontend of the Bond Tracking Service on your local machine for development and testing purposes.
 
-Within a database, each of these operations maps directly to a series of commands. However, their relationship with a RESTful API is slightly more complex.
+### Prerequisites
 
-Standard CRUD Operation:
+- Node.js (LTS version recommended)
+- npm (Node Package Manager)
 
-![curd](curd.PNG)
+### Installing
 
-The CRUD operations refer to all major functions that are implemented in relational database applications. Each letter of the CRUD can map to a SQL statement and HTTP methods.
+1. Clone the repository to your local machine:
 
-# Database 
+```bash
+git clone https://github.com/73359/arrakis_v3.git
+```
 
-H2 is an open-source lightweight Java database. It can be embedded in Java applications or run in the client-server mode
+2. Navigate to the project directory:
 
-**Schema**
+```bash
+cd arrakis_v3/react-app
+```
 
-For this example we have a table called dog. Table is automatically created when springboot application starts using following schema.sql
+3. Install dependencies using npm:
 
-	java-api\src\main\resources\schema.sql
+```bash
+npm install
+```
 
-You can modify this file to add new database tables.
+4. Run the application:
 
-**Data**
+```bash
+npm start
+```
 
-To populate data into table dog, we have used data.sql which has insert statements.
+The frontend server will start on `http://localhost:3000`.
 
-	java-api\src\main\resources\data.sql
+## Features
 
-**Database Connection Details**
+- User authentication using Firebase
+- Display active bonds with various filters
+- View bond trade details and bondholder information
+- Responsive user interface
 
-Connection details are mentioned in the application.properties 
+## Technologies Used
 
-	java-api\src\main\resources\application.properties
+- React
+- React Router DOM
+- React Bootstrap
+- Firebase Authentication
+- Axios (HTTP requests)
 
+## Authors
 
-# Steps to run the project on local machine
-
-Git clone the code to local machine
-
-	DELL@DESKTOP-ORE3T13 MINGW64 /c/DEV/GITHUB/project-arrakis/skeleton/java-api (java-skeleton)
-	$ pwd
-	/c/DEV/GITHUB/project-arrakis/skeleton/java-api
-
-To run the maven project use following mvn command
-
-	DELL@DESKTOP-ORE3T13 MINGW64 /c/DEV/GITHUB/project-arrakis/skeleton/java-api (java-skeleton)
-	$ mvn clean spring-boot:run
-
-**Once project is running :**
-
-**REST API are exposed as:**
-
-	http://localhost:8080/api/v1/dogs
-
-![REST API](REST_API_URL.PNG)
-
-**H2 Database Console:**
-
-	http://localhost:8080/h2-console
-	
-![H2 Console](H2_CONSOLE.PNG)
-
-![H2 Console 2](H2_CONSOLE2.PNG)
-
-
-**Swagger Console**
-
-Swagger2 is an open source project used to generate the REST API documents for RESTful web services. It provides a user interface to access our RESTful web services via the web browser. 
-
-You also test the APIs using this.
-
-![Swagger](SWAGGER.PNG)
-	
-
-### Reference Documentation
-For further reference, please consider the following sections:
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#boot-features-developing-web-applications)
-
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-
+- Shreya Chauhan - [@ShreyaaChauhan](https://github.com/ShreyaaChauhan)
+- Hiten Rana - [@ranahiten8](https://github.com/ranahiten8)
+- Serhat Kir - [@kirserhat](https://github.com/kirserhat)
+- Jack Murphy - [@jack494088](https://github.com/jack494088)
+- Michael Uhl - [@73359](https://github.com/73359)
